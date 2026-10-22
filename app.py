@@ -679,7 +679,7 @@ UI_COPY = (
     "Please upload a PDF or paste some text first.", "AI is not configured — add your NEBIUS_API_KEY to .env or Streamlit secrets.",
     "Note: very long document — using the first {max_chars} characters.", "Reading and explaining...",
     "Something went wrong calling the AI: {error}\n\nIf it says the model was not found, check the model id (NEBIUS_MODEL in .env) matches your Token Factory console exactly.",
-    "2. Set a collection reminder (optional)", "Collection date", "Put out by (time)", "Timezone",
+    "Set a collection reminder (optional)", "Collection date", "Put out by (time)", "Timezone",
     "How do you want the reminder?", "Add to my Google Calendar", "Download .ics file (works with any calendar app — no sign-in)",
     "Create reminder 🔔", "♻️ Wakeru garbage collection reminder", "Added to your calendar! [Open event]({link})",
     "Could not add to Google Calendar: {error}\n\nTip: the .ics download below works everywhere, no sign-in needed.",
