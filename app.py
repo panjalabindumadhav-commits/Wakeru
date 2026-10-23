@@ -369,27 +369,28 @@ st.markdown("""
         background: #e6f4e8; border-left: 4px solid #57a773; padding: 14px 18px;
         border-radius: 14px; font-size: 13.5px; margin: 16px 0;
     }  
-    /* Language selector: dark green background with white text */
-    [data-testid="stSidebar"] [data-baseweb="select"] > div,
-    [data-testid="stSidebar"] [data-baseweb="select"] div {
+    /* NUCLEAR OVERRIDE: Force dark green on the selectbox */
+    [data-testid="stSidebar"] [data-testid="stSelectbox"] div {
+        background: #143625 !important;
         background-color: #143625 !important;
-        border: 1px solid #3b7a57 !important;
+        border-color: #3b7a57 !important;
+    }
+    [data-testid="stSidebar"] [data-testid="stSelectbox"] * {
         color: #ffffff !important;
         -webkit-text-fill-color: #ffffff !important;
     }
-    [data-testid="stSidebar"] [data-baseweb="select"] *,
-    [data-testid="stSidebar"] [data-baseweb="select"] input {
-        color: #ffffff !important;
-        -webkit-text-fill-color: #ffffff !important;
-        opacity: 1 !important;
-    }
-    [data-testid="stSidebar"] [data-baseweb="select"] svg {
+    [data-testid="stSidebar"] [data-testid="stSelectbox"] svg {
         fill: #ffffff !important;
     }
-    /* The dropdown list opens outside the sidebar, so it needs its own rule */
-    [data-baseweb="popover"] ul,
-    [data-baseweb="popover"] div {
+    /* Dropdown menu popover (attaches to body, not sidebar) */
+    div[data-baseweb="popover"] div,
+    div[data-baseweb="popover"] ul,
+    div[data-baseweb="popover"] li,
+    div[data-baseweb="popover"] li * {
+        background: #143625 !important;
         background-color: #143625 !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
     }
     [data-baseweb="popover"] li,
     [data-baseweb="popover"] li * {
@@ -859,7 +860,7 @@ with tab1:
 
         # --- Reminder section ---
         st.markdown("---")
-        st.subheader(tr("2. Set a collection reminder (optional)"))
+        st.subheader(tr("Set a collection reminder (optional)"))
         col1, col2 = st.columns(2)
         with col1:
             reminder_date = st.date_input(tr("Collection date"), value=datetime.date.today() + datetime.timedelta(days=1))
