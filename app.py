@@ -368,6 +368,28 @@ st.markdown("""
     .ok-box {
         background: #e6f4e8; border-left: 4px solid #57a773; padding: 14px 18px;
         border-radius: 14px; font-size: 13.5px; margin: 16px 0;
+    }    /* Language selector: dark text on white so it's readable */
+    [data-testid="stSidebar"] [data-baseweb="select"] > div {
+        background: #ffffff !important;
+        border: 1px solid #9fbea5 !important;
+    }
+    [data-testid="stSidebar"] [data-baseweb="select"] *,
+    [data-testid="stSidebar"] [data-baseweb="select"] input {
+        color: #1f3d2b !important;
+        -webkit-text-fill-color: #1f3d2b !important;
+        opacity: 1 !important;
+    }
+    [data-testid="stSidebar"] [data-baseweb="select"] svg {
+        fill: #1f3d2b !important;
+    }
+    /* The dropdown list opens outside the sidebar, so it needs its own rule */
+    [data-baseweb="popover"] ul {
+        background: #ffffff !important;
+    }
+    [data-baseweb="popover"] li,
+    [data-baseweb="popover"] li * {
+        color: #1f3d2b !important;
+        -webkit-text-fill-color: #1f3d2b !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -657,7 +679,7 @@ UI_COPY = (
     "Please upload a PDF or paste some text first.", "AI is not configured — add your NEBIUS_API_KEY to .env or Streamlit secrets.",
     "Note: very long document — using the first {max_chars} characters.", "Reading and explaining...",
     "Something went wrong calling the AI: {error}\n\nIf it says the model was not found, check the model id (NEBIUS_MODEL in .env) matches your Token Factory console exactly.",
-    "2. Set a collection reminder (optional)", "Collection date", "Put out by (time)", "Timezone",
+    "Set a collection reminder (optional)", "Collection date", "Put out by (time)", "Timezone",
     "How do you want the reminder?", "Add to my Google Calendar", "Download .ics file (works with any calendar app — no sign-in)",
     "Create reminder 🔔", "♻️ Wakeru garbage collection reminder", "Added to your calendar! [Open event]({link})",
     "Could not add to Google Calendar: {error}\n\nTip: the .ics download below works everywhere, no sign-in needed.",
