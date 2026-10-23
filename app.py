@@ -368,28 +368,38 @@ st.markdown("""
     .ok-box {
         background: #e6f4e8; border-left: 4px solid #57a773; padding: 14px 18px;
         border-radius: 14px; font-size: 13.5px; margin: 16px 0;
-    }    /* Language selector: dark text on white so it's readable */
-    [data-testid="stSidebar"] [data-baseweb="select"] > div {
-        background: #ffffff !important;
-        border: 1px solid #9fbea5 !important;
+    }  
+    /* Language selector: dark green background with white text */
+    [data-testid="stSidebar"] [data-baseweb="select"] > div,
+    [data-testid="stSidebar"] [data-baseweb="select"] div {
+        background-color: #143625 !important;
+        border: 1px solid #3b7a57 !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
     }
     [data-testid="stSidebar"] [data-baseweb="select"] *,
     [data-testid="stSidebar"] [data-baseweb="select"] input {
-        color: #1f3d2b !important;
-        -webkit-text-fill-color: #1f3d2b !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
         opacity: 1 !important;
     }
     [data-testid="stSidebar"] [data-baseweb="select"] svg {
-        fill: #1f3d2b !important;
+        fill: #ffffff !important;
     }
     /* The dropdown list opens outside the sidebar, so it needs its own rule */
-    [data-baseweb="popover"] ul {
-        background: #ffffff !important;
+    [data-baseweb="popover"] ul,
+    [data-baseweb="popover"] div {
+        background-color: #143625 !important;
     }
     [data-baseweb="popover"] li,
     [data-baseweb="popover"] li * {
-        color: #1f3d2b !important;
-        -webkit-text-fill-color: #1f3d2b !important;
+        background-color: #143625 !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+    [data-baseweb="popover"] li:hover,
+    [data-baseweb="popover"] li:hover * {
+        background-color: #1f4e37 !important;
     }
 </style>
 """, unsafe_allow_html=True)
