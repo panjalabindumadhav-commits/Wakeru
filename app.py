@@ -369,18 +369,18 @@ st.markdown("""
         background: #e6f4e8; border-left: 4px solid #57a773; padding: 14px 18px;
         border-radius: 14px; font-size: 13.5px; margin: 16px 0;
     }  
-  /* OVERRIDE: Force white background with black text */
-    [data-testid="stSidebar"] [data-testid="stSelectbox"] div {
+  /* OVERRIDE: Force white background with black text ONLY on the dropdown */
+    [data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] div {
         background: #ffffff !important;
         background-color: #ffffff !important;
         border-color: #9fbea5 !important;
     }
-    [data-testid="stSidebar"] [data-testid="stSelectbox"] *,
-    [data-testid="stSidebar"] [data-testid="stSelectbox"] span {
+    [data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] *,
+    [data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] span {
         color: #000000 !important;
         -webkit-text-fill-color: #000000 !important;
     }
-    [data-testid="stSidebar"] [data-testid="stSelectbox"] svg {
+    [data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] svg {
         fill: #000000 !important;
     }
     /* Dropdown menu popover */
