@@ -376,25 +376,33 @@ st.markdown("""
         background: #e6f4e8; border-left: 4px solid #57a773; padding: 14px 18px;
         border-radius: 14px; font-size: 13.5px; margin: 16px 0;
     }  
-  /* OVERRIDE: Force white background with black text ONLY on the dropdown */
-    [data-testid="stSidebar"] [data-baseweb="select"] > div {
+ html body [data-testid="stSidebar"] [data-baseweb="select"] > div {
         background-color: #ffffff !important;
-        border-color: #9fbea5 !important;
+        background: #ffffff !important;
+        border: 1px solid #9fbea5 !important;
     }
-    /* Force EVERY single nested element inside the dropdown to be black */
-    [data-testid="stSidebar"] [data-baseweb="select"] * {
+    html body [data-testid="stSidebar"] [data-baseweb="select"] *,
+    html body [data-testid="stSidebar"] [data-baseweb="select"] div,
+    html body [data-testid="stSidebar"] [data-baseweb="select"] span,
+    html body [data-testid="stSidebar"] [data-baseweb="select"] input {
         color: #000000 !important;
         -webkit-text-fill-color: #000000 !important;
         fill: #000000 !important;
+        opacity: 1 !important;
     }
-    /* Dropdown menu popover */
-    div[data-baseweb="popover"] * {
+    html body div[data-baseweb="popover"] *,
+    html body ul[data-baseweb="menu"] *,
+    html body [role="listbox"] * {
         background-color: #ffffff !important;
         color: #000000 !important;
         -webkit-text-fill-color: #000000 !important;
     }
-    div[data-baseweb="popover"] li:hover * {
-        background-color: #e6f4e8 !important;
+    html body [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] *,
+    html body [data-testid="stSidebar"] [data-testid="stCaptionContainer"] *,
+    html body [data-testid="stSidebar"] [data-testid="stAlert"] *,
+    html body [data-testid="stSidebar"] label * {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
     }
 </style>
 """, unsafe_allow_html=True)
