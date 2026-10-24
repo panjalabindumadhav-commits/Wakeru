@@ -377,31 +377,23 @@ st.markdown("""
         border-radius: 14px; font-size: 13.5px; margin: 16px 0;
     }  
   /* OVERRIDE: Force white background with black text ONLY on the dropdown */
-    [data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] div {
-        background: #ffffff !important;
+    [data-testid="stSidebar"] [data-baseweb="select"] > div {
         background-color: #ffffff !important;
         border-color: #9fbea5 !important;
     }
-    [data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] *,
-    [data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] span {
+    /* Force EVERY single nested element inside the dropdown to be black */
+    [data-testid="stSidebar"] [data-baseweb="select"] * {
         color: #000000 !important;
         -webkit-text-fill-color: #000000 !important;
-    }
-    [data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] svg {
         fill: #000000 !important;
     }
     /* Dropdown menu popover */
-    div[data-baseweb="popover"] div,
-    div[data-baseweb="popover"] ul,
-    div[data-baseweb="popover"] li,
-    div[data-baseweb="popover"] li * {
-        background: #ffffff !important;
+    div[data-baseweb="popover"] * {
         background-color: #ffffff !important;
         color: #000000 !important;
         -webkit-text-fill-color: #000000 !important;
     }
-    [data-baseweb="popover"] li:hover,
-    [data-baseweb="popover"] li:hover * {
+    div[data-baseweb="popover"] li:hover * {
         background-color: #e6f4e8 !important;
     }
 </style>
