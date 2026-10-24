@@ -369,38 +369,33 @@ st.markdown("""
         background: #e6f4e8; border-left: 4px solid #57a773; padding: 14px 18px;
         border-radius: 14px; font-size: 13.5px; margin: 16px 0;
     }  
-   }
-    /* OVERRIDE: Force white background with black text */
-    [data-testid="stSidebar"] [data-baseweb="select"] > div,
-    [data-testid="stSidebar"] [data-baseweb="select"] div {
+  /* OVERRIDE: Force white background with black text */
+    [data-testid="stSidebar"] [data-testid="stSelectbox"] div {
+        background: #ffffff !important;
         background-color: #ffffff !important;
-        border: 1px solid #9fbea5 !important;
+        border-color: #9fbea5 !important;
+    }
+    [data-testid="stSidebar"] [data-testid="stSelectbox"] *,
+    [data-testid="stSidebar"] [data-testid="stSelectbox"] span {
         color: #000000 !important;
         -webkit-text-fill-color: #000000 !important;
     }
-    [data-testid="stSidebar"] [data-baseweb="select"] *,
-    [data-testid="stSidebar"] [data-baseweb="select"] input {
-        color: #000000 !important;
-        -webkit-text-fill-color: #000000 !important;
-        opacity: 1 !important;
-    }
-    [data-testid="stSidebar"] [data-baseweb="select"] svg {
+    [data-testid="stSidebar"] [data-testid="stSelectbox"] svg {
         fill: #000000 !important;
     }
-    /* The dropdown list opens outside the sidebar */
-    [data-baseweb="popover"] ul,
-    [data-baseweb="popover"] div {
-        background-color: #ffffff !important;
-    }
-    [data-baseweb="popover"] li,
-    [data-baseweb="popover"] li * {
+    /* Dropdown menu popover */
+    div[data-baseweb="popover"] div,
+    div[data-baseweb="popover"] ul,
+    div[data-baseweb="popover"] li,
+    div[data-baseweb="popover"] li * {
+        background: #ffffff !important;
         background-color: #ffffff !important;
         color: #000000 !important;
         -webkit-text-fill-color: #000000 !important;
     }
     [data-baseweb="popover"] li:hover,
     [data-baseweb="popover"] li:hover * {
-        background-color: #f0f2f6 !important;
+        background-color: #e6f4e8 !important;
     }
 </style>
 """, unsafe_allow_html=True)
