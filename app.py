@@ -294,6 +294,13 @@ st.markdown("""
     [data-baseweb="input"] input {
         color: #000000 !important;
     }
+    /* Fix: Force sidebar headings and labels back to white */
+    [data-testid="stSidebar"] h3,
+    [data-testid="stSidebar"] [data-testid="stWidgetLabel"],
+    [data-testid="stSidebar"] [data-testid="stWidgetLabel"] * {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
     [data-testid="stTextInput"] input,
     [data-testid="stTextArea"] textarea,
     [data-baseweb="textarea"] textarea,
