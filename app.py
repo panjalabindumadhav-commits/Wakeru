@@ -381,12 +381,18 @@ st.markdown("""
         background: #1b3629 !important;
         background-color: #1b3629 !important;
         border-color: rgba(255, 255, 255, 0.28) !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
     }
     [data-testid="stSidebar"] *,
     [data-testid="stSidebar"] [data-baseweb="select"] *,
-    [data-testid="stSidebar"] [data-baseweb="select"] span {
+    [data-testid="stSidebar"] [data-baseweb="select"] div,
+    [data-testid="stSidebar"] [data-baseweb="select"] span,
+    [data-testid="stSidebar"] [data-baseweb="select"] svg {
         color: #ffffff !important;
         -webkit-text-fill-color: #ffffff !important;
+        fill: #ffffff !important;
+    }
     }
 </style>
 """, unsafe_allow_html=True)
