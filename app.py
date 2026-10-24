@@ -369,38 +369,38 @@ st.markdown("""
         background: #e6f4e8; border-left: 4px solid #57a773; padding: 14px 18px;
         border-radius: 14px; font-size: 13.5px; margin: 16px 0;
     }  
-    /* NUCLEAR OVERRIDE: Force dark green on the selectbox */
-    [data-testid="stSidebar"] [data-testid="stSelectbox"] div {
-        background: #143625 !important;
-        background-color: #143625 !important;
-        border-color: #3b7a57 !important;
+   }
+    /* OVERRIDE: Force white background with black text */
+    [data-testid="stSidebar"] [data-baseweb="select"] > div,
+    [data-testid="stSidebar"] [data-baseweb="select"] div {
+        background-color: #ffffff !important;
+        border: 1px solid #9fbea5 !important;
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
     }
-    [data-testid="stSidebar"] [data-testid="stSelectbox"] * {
-        color: #ffffff !important;
-        -webkit-text-fill-color: #ffffff !important;
+    [data-testid="stSidebar"] [data-baseweb="select"] *,
+    [data-testid="stSidebar"] [data-baseweb="select"] input {
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+        opacity: 1 !important;
     }
-    [data-testid="stSidebar"] [data-testid="stSelectbox"] svg {
-        fill: #ffffff !important;
+    [data-testid="stSidebar"] [data-baseweb="select"] svg {
+        fill: #000000 !important;
     }
-    /* Dropdown menu popover (attaches to body, not sidebar) */
-    div[data-baseweb="popover"] div,
-    div[data-baseweb="popover"] ul,
-    div[data-baseweb="popover"] li,
-    div[data-baseweb="popover"] li * {
-        background: #143625 !important;
-        background-color: #143625 !important;
-        color: #ffffff !important;
-        -webkit-text-fill-color: #ffffff !important;
+    /* The dropdown list opens outside the sidebar */
+    [data-baseweb="popover"] ul,
+    [data-baseweb="popover"] div {
+        background-color: #ffffff !important;
     }
     [data-baseweb="popover"] li,
     [data-baseweb="popover"] li * {
-        background-color: #143625 !important;
-        color: #ffffff !important;
-        -webkit-text-fill-color: #ffffff !important;
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
     }
     [data-baseweb="popover"] li:hover,
     [data-baseweb="popover"] li:hover * {
-        background-color: #1f4e37 !important;
+        background-color: #f0f2f6 !important;
     }
 </style>
 """, unsafe_allow_html=True)
