@@ -376,28 +376,25 @@ st.markdown("""
         background: #e6f4e8; border-left: 4px solid #57a773; padding: 14px 18px;
         border-radius: 14px; font-size: 13.5px; margin: 16px 0;
     }  
-/* 1. Make sidebar text white, EXCEPT anything inside the selectbox */
-    html body [data-testid="stSidebar"] *:not([data-baseweb="select"]):not([data-baseweb="select"] *) {
-        color: #ffffff !important;
-        -webkit-text-fill-color: #ffffff !important;
-    }
-
-    /* 2. Force the selectbox background to white and ALL text inside it to black */
-    html body [data-testid="stSidebar"] [data-baseweb="select"] > div,
-    html body [data-testid="stSidebar"] [data-baseweb="select"] div {
-        background-color: #ffffff !important;
-        background: #ffffff !important;
-        color: #000000 !important;
-        -webkit-text-fill-color: #000000 !important;
-    }
+/* 1. Force all text and icons inside the sidebar to be bright white */
+    html body [data-testid="stSidebar"] *,
     html body [data-testid="stSidebar"] [data-baseweb="select"] *,
+    html body [data-testid="stSidebar"] [data-baseweb="select"] div,
     html body [data-testid="stSidebar"] [data-baseweb="select"] span,
     html body [data-testid="stSidebar"] [data-baseweb="select"] input,
     html body [data-testid="stSidebar"] [data-baseweb="select"] svg {
-        color: #000000 !important;
-        -webkit-text-fill-color: #000000 !important;
-        fill: #000000 !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        fill: #ffffff !important;
         opacity: 1 !important;
+    }
+
+    /* 2. Make the translator dropdown box dark green to match the sidebar */
+    html body [data-testid="stSidebar"] [data-baseweb="select"] > div,
+    html body [data-testid="stSidebar"] [data-baseweb="select"] div {
+        background-color: #1b3629 !important;
+        background: #1b3629 !important;
+        border-color: rgba(255, 255, 255, 0.35) !important;
     }
 </style>
 """, unsafe_allow_html=True)
