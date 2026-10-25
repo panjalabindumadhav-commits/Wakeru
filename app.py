@@ -384,7 +384,7 @@ st.markdown("""
         color: #ffffff !important;
         -webkit-text-fill-color: #ffffff !important;
     }
-    [data-testid="stSidebar"] *,
+[data-testid="stSidebar"] *,
     [data-testid="stSidebar"] [data-baseweb="select"] *,
     [data-testid="stSidebar"] [data-baseweb="select"] div,
     [data-testid="stSidebar"] [data-baseweb="select"] span,
@@ -392,7 +392,6 @@ st.markdown("""
         color: #ffffff !important;
         -webkit-text-fill-color: #ffffff !important;
         fill: #ffffff !important;
-    }
     }
 </style>
 """, unsafe_allow_html=True)
