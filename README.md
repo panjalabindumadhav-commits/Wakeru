@@ -1,83 +1,89 @@
-# ♻️ Wakeru (分ける) — Japan Waste Sorting Assistant
 
-**Sort with confidence.** Wakeru helps foreign residents in Japan navigate the
-country's famously complicated, ward-by-ward garbage sorting rules — including
-people in small towns whose city publishes rules only in Japanese.
+# ♻️ Wakeru (分ける): Japan Garbage Sorting Assistant
 
-**Nebius x NVIDIA Global AI Hackathon — Best Apps and Agents track.**
+**Nebius x NVIDIA Global AI Hackathon, "Best Apps and Agents" track**
 
-![License: MIT](https://img.shields.io/badge/License-MIT-green)
+🔗 **Live demo:** https://wakeru-japan.streamlit.app
+🎥 **Demo video:** [ADD YOUR YOUTUBE LINK HERE]
 
-## The problem
+Wakeru helps foreign residents in Japan sort their garbage correctly. Every city in
+Japan sets its own rules, usually published only in Japanese, and small towns often
+have no English guide at all. Get it wrong and your trash isn't collected.
 
-Japan's waste rules are set **municipality by municipality** (in Tokyo, even
-ward by ward). There is no single national standard, and most small cities
-publish their garbage guide **only as a Japanese PDF**. Foreign residents
-face fines and uncollected trash over rules they can't even read.
+Wakeru reads **your own city's rules** (paste the text or upload the PDF) and explains
+them in **your language**, then helps you set a reminder for collection day.
 
-## What Wakeru does
+## Who it's for
+Foreign residents in Japan, especially in small towns and rural areas where the city
+publishes its rules only in Japanese.
 
-| Feature | How it works |
+## Features
+| Feature | What it does |
 |---|---|
-| 🤖 **AI rule explainer** | Upload your city's garbage PDF (or paste text) → **NVIDIA Nemotron** on **Nebius Token Factory** explains the rule in plain language, in **14 selectable languages** — with a waste-reduction tip and a safety note when relevant. |
-| 🔔 **Collection reminders** | Save the explained rule to **Google Calendar** (OAuth), or download an **.ics file** that works with any calendar app — no sign-in needed. 30-minute alarm included. |
-| 🔎 **Quick item lookup** | Instant answers for ~35 common items (PET bottles, futons, batteries, spray cans...), each with the category and a practical note. |
-| 🏙️ **Sourced city guides** | Real, cited local data for Shinjuku, Osaka, and Fukuoka (bag rules, collection patterns, local quirks like Fukuoka's mandatory color-coded bags). |
-| 🧪 **Built-in samples** | No PDF handy? Try sample rules (Japanese ward notice, small-town English notice) with one click — great for demos. |
+| 🤖 AI rule explainer | Upload a city PDF or paste text. Get a plain-language explanation, a practical tip and a safety note in your language. |
+| 🌐 Page translation | The whole interface can be shown in 14 languages. |
+| 🔔 Collection reminders | Download an `.ics` calendar file (works with Google, Apple and Outlook, no sign-in). Optional Google Calendar login when run locally. |
+| 🔎 Quick item lookup | Instant general guidance for about 35 common items. |
+| 🏙️ City guides | Sourced local details for Shinjuku, Osaka and Fukuoka. |
+| 🧪 Sample rules | Built-in Japanese and English sample notices for trying the app. |
 
-## How we use Nebius & NVIDIA
+## How we use Nebius and NVIDIA
+All AI calls go through **Nebius Token Factory** (OpenAI-compatible API).
 
-- **Model:** `nvidia/nvidia-nemotron-3-nano-30b-a3b` (NVIDIA open-source model)
-  — served via the OpenAI-compatible **Nebius Token Factory** inference API.
-- **Why this model:** fast + cheap per call (important for a tool residents
-  would use daily), strong multilingual quality for explaining Japanese
-  municipal documents in the user's language.
-- The model is held to a strict **"do not invent details"** system prompt —
-  if the source document is unclear, Wakeru says so instead of guessing.
-- Model id is configurable via `NEBIUS_MODEL` in `.env`.
+| Task | Model | Platform |
+|---|---|---|
+| Explains the city's garbage rules (core feature) | **NVIDIA Nemotron**: `nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B` | Nebius Token Factory |
+| Translates the page interface | `Qwen/Qwen3-30B-A3B-Instruct-2507` | Nebius Token Factory |
+
+The explainer is instructed not to invent details that aren't in the source text. If the
+source is unclear, it says so. Model IDs are case-sensitive.
 
 ## Run it locally
-
 ```bash
+git clone https://github.com/panjalabindumadhav-commits/Wakeru.git
+cd Wakeru
 pip install -r requirements.txt
+```
+Add your Nebius API key in **one** of these ways:
+- Create a `.env` file: `NEBIUS_API_KEY=your-key-here` (see `.env.example`)
+- Or create `.streamlit/secrets.toml`: `NEBIUS_API_KEY = "your-key-here"`
 
-# 1. Create .env from the example and add your Nebius Token Factory key
-cp .env.example .env   # then edit .env
-
-# 2. (Optional) Google Calendar integration
-#    Download an OAuth "Desktop app" client from Google Cloud Console
-#    (enable the Google Calendar API) and save it as credentials.json here.
-#    Without it, the .ics download still works.
-
-# 3. Run
+Then run:
+```bash
 streamlit run app.py
 ```
+Optional: set `NEBIUS_MODEL` or `NEBIUS_TRANSLATION_MODEL` to override the default models.
 
-## Deploying a public demo
+**Google Calendar (optional, local only):** create an OAuth "Desktop app" client in
+Google Cloud, save it as `credentials.json` next to `app.py`, and add your account as a
+test user. If your login stops working after about 7 days (Google's limit for apps in
+Testing mode), delete `token.json` and sign in again. The `.ics` download always works.
 
-Streamlit Community Cloud works: put `NEBIUS_API_KEY` in the app's Secrets
-settings. Google OAuth needs extra config on a hosted demo, so the **.ics
-download** is the reliable demo path — it needs no credentials at all.
+## Deploy (Streamlit Community Cloud)
+1. Push this repo to GitHub.
+2. On share.streamlit.io, create an app: main file `app.py`.
+3. In **Advanced settings → Secrets**, add `NEBIUS_API_KEY = "your-key-here"`.
 
-## Honesty note
+Secrets files (`.env`, `secrets.toml`, `credentials.json`, `token.json`) are in
+`.gitignore` and are never committed.
 
-Japan's garbage rules are set locally and change over time. Wakeru is a
-helpful starting point, **not an official source** — always confirm anything
-that matters (fines, bag types, collection days) with your city/ward.
+## Known limitations
+- Scanned or image-only PDFs can't be read (no OCR). Paste the text instead.
+- Very long documents: only the first 12,000 characters are used.
+- Sourced city guides exist for only 3 cities (Shinjuku, Osaka, Fukuoka).
+- AI explanations and translations can contain mistakes. Always confirm with your ward office.
+- Google Calendar login works only when run locally. The deployed app uses the `.ics` download.
+- Wakeru doesn't look up collection days by address.
+- Not an official source. Japan has no single national standard and no free public API for all cities' rules.
 
-## Project history (significantly updated during the Submission Period)
-
-Wakeru existed before the hackathon as a small static lookup app (a hardcoded
-item list). During the Submission Period (Aug 26 – Oct 30, 2026) it was
-significantly rebuilt:
-
-- Added the **NVIDIA Nemotron + Nebius Token Factory** AI pipeline
-  (multilingual PDF/text rule explanation)
-- Added **Google Calendar** reminders and the **.ics download** fallback
-- Added **14-language selector**, built-in sample rules, scanned-PDF detection
-- Restored and expanded the sourced city guides and the item database
-- Complete visual redesign (light-green theme, responsive cards)
+## Project history (what changed during the Submission Period)
+Wakeru existed before this hackathon as a simple Streamlit lookup tool with hardcoded
+city and item data and **no AI**. During the Submission Period (Aug 26 to Oct 30, 2026) I added:
+- AI rule explanation with NVIDIA Nemotron on Nebius Token Factory
+- PDF upload and paste-text input, with sample rules
+- Page translation into 14 languages
+- Calendar reminders (`.ics` download and optional Google Calendar)
+- The City guide tab, a redesigned interface, and public deployment
 
 ## License
-
-MIT — see [LICENSE](LICENSE).
+MIT. See `LICENSE.txt`.
