@@ -4,7 +4,7 @@
 **Nebius x NVIDIA Global AI Hackathon, "Best Apps and Agents" track**
 
 🔗 **Live demo:** https://wakeru-japan.streamlit.app
-🎥 **Demo video:** [ADD YOUR YOUTUBE LINK HERE]
+🎥 **Demo video:** [https://youtu.be/eyfgaBA7jOY]
 
 Wakeru helps foreign residents in Japan sort their garbage correctly. Every city in
 Japan sets its own rules, usually published only in Japanese, and small towns often
